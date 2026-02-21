@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- Base configuration -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </base-config>
+
+    <!-- Domain-specific configuration -->
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">libertyreach.io</domain>
+        <domain includeSubdomains="true">api.libertyreach.io</domain>
+        <domain includeSubdomains="true">signal.libertyreach.io</domain>
+        
+        <!-- Certificate pinning (add your certificates in production) -->
+        <pin-set expiration="2025-12-31">
+            <!-- Add your certificate pins here -->
+            <!-- pin digest="SHA256">your-pin-hash</pin -->
+        </pin-set>
+    </domain-config>
+
+    <!-- Debug configuration (remove in production) -->
+    <debug-overrides>
+        <trust-anchors>
+            <certificates src="user" />
+        </trust-anchors>
+    </debug-overrides>
+</network-security-config>

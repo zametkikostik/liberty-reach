@@ -1,0 +1,51 @@
+{
+  "name": "liberty-reach",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Production Super-Messenger: Telegram + Zangi + VoIP + Video + P2P CDN + FilePizza + Federation",
+  "author": "Liberty Reach Team",
+  "license": "AGPL-3.0-or-later",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "dev:mobile": "turbo run dev --filter=@liberty-reach/mobile",
+    "dev:desktop": "turbo run dev --filter=@liberty-reach/desktop",
+    "dev:web": "turbo run dev --filter=@liberty-reach/web",
+    "dev:crypto": "turbo run dev --filter=@liberty-reach/crypto",
+    "dev:p2p": "turbo run dev --filter=@liberty-reach/p2p",
+    "dev:p2p-cdn": "turbo run dev --filter=@liberty-reach/p2p-cdn",
+    "dev:voice": "turbo run dev --filter=@liberty-reach/voice",
+    "dev:voip": "turbo run dev --filter=@liberty-reach/voip",
+    "dev:video": "turbo run dev --filter=@liberty-reach/video",
+    "dev:fileshare": "turbo run dev --filter=@liberty-reach/fileshare",
+    "dev:stories": "turbo run dev --filter=@liberty-reach/stories",
+    "dev:notes": "turbo run dev --filter=@liberty-reach/notes",
+    "dev:folders": "turbo run dev --filter=@liberty-reach/folders",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "test:coverage": "turbo run test:coverage",
+    "clean": "turbo run clean && rm -rf node_modules .turbo",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "typecheck": "turbo run typecheck",
+    "security:audit": "npm audit && cargo audit",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "eslint": "^8.55.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.1",
+    "turbo": "^2.0.0",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "packageManager": "npm@10.2.4"
+}

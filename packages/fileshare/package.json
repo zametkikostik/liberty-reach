@@ -1,0 +1,39 @@
+{
+  "name": "@liberty-reach/fileshare",
+  "version": "1.0.0",
+  "description": "P2P File Sharing for Liberty Reach - FilePizza integration",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "src"],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@liberty-reach/crypto": "^1.0.0",
+    "@liberty-reach/p2p-cdn": "^1.0.0",
+    "filepizza-core": "^1.0.0",
+    "webtorrent": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@vitest/coverage-v8": "^1.1.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.1.0"
+  },
+  "engines": {"node": ">=20.0.0"},
+  "license": "AGPL-3.0-or-later"
+}

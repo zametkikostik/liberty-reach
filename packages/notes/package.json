@@ -1,0 +1,33 @@
+{
+  "name": "@liberty-reach/notes",
+  "version": "1.0.0",
+  "description": "Notes feature for Liberty Reach (Telegram-like Saved Messages with notes)",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "src"],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@liberty-reach/crypto": "^1.0.0",
+    "zustand": "^4.4.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.1.0"
+  },
+  "engines": {"node": ">=20.0.0"},
+  "license": "AGPL-3.0-or-later"
+}

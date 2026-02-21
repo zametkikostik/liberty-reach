@@ -1,0 +1,74 @@
+{
+  "name": "@liberty-reach/crypto",
+  "version": "1.0.0",
+  "description": "Production Post-Quantum Cryptography for Liberty Reach",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./wasm": {
+      "types": "./dist/wasm/index.d.ts",
+      "import": "./dist/wasm/index.js"
+    },
+    "./native": {
+      "types": "./dist/native/index.d.ts",
+      "import": "./dist/native/index.js"
+    }
+  },
+  "files": ["dist", "src", "wasm"],
+  "scripts": {
+    "build": "npm run build:ts && npm run build:wasm",
+    "build:ts": "tsc -p tsconfig.json",
+    "build:wasm": "node scripts/build-wasm.js",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage --reporter=junit --outputFile=coverage.xml",
+    "test:watch": "vitest watch",
+    "benchmark": "tsx scripts/benchmark.ts",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist coverage",
+    "prepublishOnly": "npm run build && npm run test"
+  },
+  "dependencies": {
+    "@stablelib/kyber": "^1.0.2",
+    "@stablelib/dilithium": "^1.0.1",
+    "@stablelib/x25519": "^1.0.3",
+    "@stablelib/aes-gcm": "^1.0.2",
+    "@stablelib/chacha20poly1305": "^1.0.2",
+    "@stablelib/hkdf": "^1.0.2",
+    "@stablelib/sha3": "^1.0.2",
+    "@stablelib/blake3": "^0.1.0",
+    "@stablelib/ed25519": "^1.0.3",
+    "libsodium-wrappers": "^0.7.13",
+    "tweetnacl": "^1.0.3"
+  },
+  "devDependencies": {
+    "@types/libsodium-wrappers": "^0.7.11",
+    "@types/node": "^20.10.0",
+    "@types/tweetnacl": "^2.0.0",
+    "@vitest/coverage-v8": "^1.1.0",
+    "eslint": "^8.55.0",
+    "fast-check": "^3.15.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.1.0",
+    "wabt": "^1.0.34",
+    "binaryen": "^116.0.0"
+  },
+  "engines": {"node": ">=20.0.0"},
+  "sideEffects": false,
+  "keywords": ["cryptography", "post-quantum", "kyber", "dilithium", "signal-protocol", "e2e"],
+  "license": "AGPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liberty-reach/liberty-reach.git",
+    "directory": "packages/crypto"
+  }
+}

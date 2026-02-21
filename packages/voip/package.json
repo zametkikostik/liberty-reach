@@ -1,0 +1,41 @@
+{
+  "name": "@liberty-reach/voip",
+  "version": "1.0.0",
+  "description": "VoIP Telephony for Liberty Reach - Internal numbers and offline calls",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "src"],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@liberty-reach/crypto": "^1.0.0",
+    "@liberty-reach/voice": "^1.0.0",
+    "@liberty-reach/p2p": "^1.0.0",
+    "sip.js": "^0.21.2",
+    "webrtc-adapter": "^8.2.0",
+    "zustand": "^4.4.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@vitest/coverage-v8": "^1.1.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.1.0"
+  },
+  "engines": {"node": ">=20.0.0"},
+  "license": "AGPL-3.0-or-later"
+}

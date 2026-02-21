@@ -1,0 +1,19 @@
+/**
+ * Liberty Reach - React Native Bundle
+ * This is a simplified bundle for demonstration
+ */
+var LibertyReach = (function() {
+    'use strict';
+    
+    console.log('Liberty Reach starting...');
+    
+    return {
+        name: 'Liberty Reach',
+        version: '1.0.0',
+        init: function() {
+            console.log('Liberty Reach initialized');
+        }
+    };
+})();
+
+console.log('Bundle loaded');

@@ -1,0 +1,22 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@liberty-reach/crypto": ["../../packages/crypto/src"],
+      "@liberty-reach/p2p": ["../../packages/p2p/src"],
+      "@liberty-reach/protocol": ["../../packages/protocol/src"],
+      "@liberty-reach/ui": ["../../packages/ui/src"],
+      "@/*": ["./src/*"]
+    },
+    "types": ["node"]
+  },
+  "include": ["src/**/*", ".next/types/**/*.ts", "next-env.d.ts"],
+  "exclude": ["node_modules"]
+}

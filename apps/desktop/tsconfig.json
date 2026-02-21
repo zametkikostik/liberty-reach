@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "tsBuildInfoFile": "./dist/tsbuildinfo",
+    "jsx": "react-jsx",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "paths": {
+      "@liberty-reach/crypto": ["../../packages/crypto/src"],
+      "@liberty-reach/p2p": ["../../packages/p2p/src"],
+      "@liberty-reach/protocol": ["../../packages/protocol/src"],
+      "@liberty-reach/ui": ["../../packages/ui/src"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "src-tauri"]
+}

@@ -1,0 +1,235 @@
+# Liberty Reach .gitignore
+# Protects against secret leaks and build artifacts
+
+# ============================================================================
+# ENVIRONMENT & SECRETS (CRITICAL - NEVER COMMIT)
+# ============================================================================
+.env
+.env.*.local
+.env.development
+.env.production
+*.env
+.envrc
+local.env
+local.env.*
+secrets/
+*.secret
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+keystore/
+*.keystore
+*.jks
+*.bks
+
+# Explicitly ignore .env.local to prevent leaks
+.env.local
+
+# ============================================================================
+# DEPENDENCIES
+# ============================================================================
+node_modules/
+**/node_modules/
+vendor/
+**/vendor/
+Pods/
+**/Pods/
+.dart_tool/
+.flutter-plugins
+.packages
+.pub/
+
+# ============================================================================
+# BUILD OUTPUTS
+# ============================================================================
+# General
+dist/
+**/dist/
+build/
+**/build/
+out/
+**/out/
+.turbo/
+**/.turbo/
+
+# Rust
+target/
+**/target/
+**/src-tauri/target/
+Cargo.lock
+
+# Go
+bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Java/Kotlin (Android)
+*.class
+*.jar
+*.aar
+*.ap_
+*.apk
+*.aab
+*.dex
+*.iml
+**/android/app/build/
+**/android/build/
+**/android/.gradle/
+**/android/.idea/
+.gradle/
+local.properties
+
+# iOS
+**/ios/Pods/
+**/ios/build/
+**/ios/.xcode.env.local
+*.xcworkspace
+!*.xcworkspace/contents.xcworkspacedata
+*.xcuserstate
+*.xccheckout
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Web
+.next/
+.nuxt/
+.output/
+.vercel/
+netlify/
+
+# ============================================================================
+# IDE & EDITORS
+# ============================================================================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
+*.log
+
+# ============================================================================
+# OS FILES
+# ============================================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ============================================================================
+# TEST & COVERAGE
+# ============================================================================
+coverage/
+**/coverage/
+*.lcov
+*.cover
+*.pyc
+__pycache__/
+.nyc_output/
+
+# ============================================================================
+# LOGS
+# ============================================================================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ============================================================================
+# DOCKER
+# ============================================================================
+docker-compose.override.yml
+.docker/
+
+# ============================================================================
+# CERTIFICATES & SIGNING
+# ============================================================================
+**/android/app/*.jks
+**/android/app/*.keystore
+**/android/keystore.properties
+**/android/signing.properties
+**/ios/*.p12
+**/ios/*.mobileprovision
+**/ios/*.swift
+fastlane/
+!fastlane/README.md
+!fastlane/report.xml
+!fastlane/screenshots/
+
+# ============================================================================
+# ANDROID SPECIFIC
+# ============================================================================
+**/android/local.properties
+**/android/gradle.properties
+**/android/secrets.properties
+**/android/app/google-services.json
+**/android/app/fabric.properties
+
+# ============================================================================
+# IOS SPECIFIC
+# ============================================================================
+**/ios/GoogleService-Info.plist
+**/ios/Config.xcconfig
+**/ios/Podfile.lock
+
+# ============================================================================
+# TAURI SPECIFIC
+# ============================================================================
+**/src-tauri/target/
+**/src-tauri/Cargo.lock
+**/src-tauri/*.key
+**/src-tauri/*.crt
+
+# ============================================================================
+# UPLOADS & TEMP
+# ============================================================================
+uploads/
+temp/
+tmp/
+.cache/
+**/.cache/
+
+# ============================================================================
+# MANUAL ADDITIONS (Liberty Reach specific)
+# ============================================================================
+# Crypto keys
+packages/crypto/keys/
+packages/crypto/*.key
+server/signaling/*.key
+server/federation/*.key
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+data/
+
+# P2P files
+p2p_chunks/
+cdn_cache/
+
+# Voice recordings
+voicemails/
+recordings/
+
+# Translations (if generated)
+**/locales/generated/

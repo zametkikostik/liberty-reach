@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Liberty Reach Colors -->
+    <color name="primary">#007AFF</color>
+    <color name="primary_dark">#0056B3</color>
+    <color name="primary_light">#5AC8FA</color>
+    <color name="accent">#5856D6</color>
+    
+    <!-- Background -->
+    <color name="background">#FFFFFF</color>
+    <color name="background_secondary">#F2F2F7</color>
+    <color name="surface">#FFFFFF</color>
+    
+    <!-- Text -->
+    <color name="text_primary">#111827</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="text_tertiary">#9CA3AF</color>
+    <color name="text_inverse">#FFFFFF</color>
+    
+    <!-- Status -->
+    <color name="success">#34C759</color>
+    <color name="warning">#FF9500</color>
+    <color name="error">#FF3B30</color>
+    <color name="info">#007AFF</color>
+    
+    <!-- Call colors -->
+    <color name="call_accept">#34C759</color>
+    <color name="call_reject">#FF3B30</color>
+    <color name="call_end">#FF3B30</color>
+    <color name="call_mute">#6B7280</color>
+    
+    <!-- PTT (Push-to-Talk) -->
+    <color name="ptt_active">#34C759</color>
+    <color name="ptt_inactive">#6B7280</color>
+    <color name="ptt_pressed">#FF9500</color>
+</resources>

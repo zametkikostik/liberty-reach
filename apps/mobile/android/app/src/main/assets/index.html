@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Liberty Reach</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .logo {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .tagline {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .features {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 20px;
+            width: 100%;
+            max-width: 400px;
+        }
+        .feature {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .feature:last-child { border-bottom: none; }
+        .feature-icon {
+            font-size: 24px;
+            margin-right: 12px;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(52, 199, 89, 0.3);
+            border-radius: 8px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">🛡️</div>
+    <h1>Liberty Reach</h1>
+    <p class="tagline">Post-Quantum Secure Messenger</p>
+    
+    <div class="features">
+        <div class="feature">
+            <span class="feature-icon">🔐</span>
+            <span>Post-Quantum Encryption</span>
+        </div>
+        <div class="feature">
+            <span class="feature-icon">📞</span>
+            <span>VoIP Calls</span>
+        </div>
+        <div class="feature">
+            <span class="feature-icon">📹</span>
+            <span>Video Calls</span>
+        </div>
+        <div class="feature">
+            <span class="feature-icon">🎙️</span>
+            <span>Push-to-Talk</span>
+        </div>
+        <div class="feature">
+            <span class="feature-icon">📁</span>
+            <span>File Sharing</span>
+        </div>
+        <div class="feature">
+            <span class="feature-icon">🌐</span>
+            <span>P2P Network</span>
+        </div>
+    </div>
+    
+    <div class="status">
+        ✅ App loaded successfully!<br>
+        Version: 1.0.0
+    </div>
+    
+    <script>
+        console.log('Liberty Reach loaded');
+        console.log('Features: PQ Crypto, VoIP, Video, P2P');
+    </script>
+</body>
+</html>

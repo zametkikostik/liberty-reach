@@ -1,0 +1,19 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "tsBuildInfoFile": "./dist/tsbuildinfo",
+    "jsx": "react-native",
+    "lib": ["ES2022"],
+    "moduleResolution": "node",
+    "paths": {
+      "@liberty-reach/crypto": ["../../packages/crypto/src"],
+      "@liberty-reach/p2p": ["../../packages/p2p/src"],
+      "@liberty-reach/protocol": ["../../packages/protocol/src"],
+      "@liberty-reach/ui": ["../../packages/ui/src"]
+    }
+  },
+  "include": ["src/**/*", "index.js", "App.tsx"],
+  "exclude": ["node_modules", "dist", "android", "ios", "**/*.test.tsx"]
+}

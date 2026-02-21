@@ -1,0 +1,45 @@
+{
+  "name": "@liberty-reach/p2p-cdn",
+  "version": "1.0.0",
+  "description": "P2P CDN via WebRTC Data Channels for Liberty Reach",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "src"],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@liberty-reach/crypto": "^1.0.0",
+    "@liberty-reach/protocol": "^1.0.0",
+    "libp2p": "^1.0.0",
+    "@libp2p/webrtc": "^4.0.0",
+    "@libp2p/websockets": "^8.0.0",
+    "@libp2p/yamux": "^1.0.0",
+    "@libp2p/noise": "^12.0.0",
+    "@multiformats/multiaddr": "^12.0.0",
+    "multiformats": "^13.0.0",
+    "idb": "^7.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@vitest/coverage-v8": "^1.1.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.1.0"
+  },
+  "engines": {"node": ">=20.0.0"},
+  "license": "AGPL-3.0-or-later"
+}

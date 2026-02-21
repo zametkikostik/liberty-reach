@@ -1,0 +1,51 @@
+{
+  "name": "@liberty-reach/p2p",
+  "version": "0.1.0",
+  "description": "P2P Networking Module for Liberty Reach - WebRTC + libp2p",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src --ext .ts,.tsx",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist coverage"
+  },
+  "dependencies": {
+    "@libp2p/interface": "^1.0.0",
+    "@libp2p/mplex": "^10.0.0",
+    "@libp2p/noise": "^12.0.0",
+    "@libp2p/tcp": "^9.0.0",
+    "@libp2p/webrtc": "^4.0.0",
+    "@libp2p/websockets": "^8.0.0",
+    "@libp2p/yamux": "^1.0.0",
+    "@multiformats/multiaddr": "^12.0.0",
+    "libp2p": "^1.0.0",
+    "multiformats": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@vitest/coverage-v8": "^1.1.0",
+    "eslint": "^8.55.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.1.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
