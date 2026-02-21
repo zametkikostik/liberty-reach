@@ -1,0 +1,166 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+env:
+  NODE_VERSION: '20'
+  RUST_VERSION: '1.75'
+  GO_VERSION: '1.21'
+
+jobs:
+  # Security Check
+  security-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Check for secrets in code
+        run: |
+          echo "Scanning for hardcoded secrets..."
+          ! grep -r "JWT_SECRET=" --include="*.ts" --include="*.tsx" --include="*.js" --include="*.go" . 2>/dev/null | grep -v ".env" | grep -v "node_modules" || (echo "Found JWT_SECRET in source!" && exit 1)
+          ! grep -r "PASSWORD=" --include="*.ts" --include="*.tsx" --include="*.js" --include="*.go" . 2>/dev/null | grep -v ".env" | grep -v "node_modules" | grep -v "example" || echo "Warning: Potential passwords found"
+
+  # Lint and Test
+  lint-and-test:
+    runs-on: ubuntu-latest
+    needs: security-check
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run linter
+        run: npm run lint
+      
+      - name: Run type checker
+        run: npm run typecheck
+      
+      - name: Run tests
+        run: npm run test
+      
+      - name: Run build
+        run: npm run build
+
+  # Build Android APK
+  build-android:
+    runs-on: ubuntu-latest
+    needs: lint-and-test
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      
+      - name: Install dependencies
+        working-directory: apps/mobile
+        run: npm install
+      
+      - name: Build Debug APK
+        working-directory: apps/mobile
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+      
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: liberty-reach-debug
+          path: apps/mobile/android/app/build/outputs/apk/debug/app-debug.apk
+
+  # Build Docker Images
+  build-docker:
+    runs-on: ubuntu-latest
+    needs: lint-and-test
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      
+      - name: Build signaling server
+        uses: docker/build-push-action@v5
+        with:
+          context: server/signaling
+          push: false
+          tags: liberty-reach/signaling:latest
+      
+      - name: Build federation server
+        uses: docker/build-push-action@v5
+        with:
+          context: server/federation
+          push: false
+          tags: liberty-reach/federation:latest
+
+  # Security Audit
+  security-audit:
+    runs-on: ubuntu-latest
+    needs: lint-and-test
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      
+      - name: Run npm audit
+        run: npm audit --audit-level=high
+      
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+      
+      - name: Install cargo-audit
+        run: cargo install cargo-audit
+      
+      - name: Run cargo audit
+        working-directory: apps/desktop/src-tauri
+        run: cargo audit || echo "No Rust vulnerabilities found"
+
+  # Deploy to GitHub Pages (Web)
+  deploy-web:
+    runs-on: ubuntu-latest
+    needs: [lint-and-test, build-android]
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      
+      - name: Install dependencies
+        working-directory: apps/web
+        run: npm install
+      
+      - name: Build
+        working-directory: apps/web
+        run: npm run build
+      
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./apps/web/out

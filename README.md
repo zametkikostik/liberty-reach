@@ -163,6 +163,7 @@ cd apps/mobile/android
 - [@liberty-reach/voip](./packages/voip/README.md)
 - [@liberty-reach/video](./packages/video/README.md)
 - [@liberty-reach/fileshare](./packages/fileshare/README.md)
+- [@liberty-reach/translate](./packages/translate/README.md) — **NEW** Auto-translation (50+ languages including Bulgarian)
 
 ## 🔒 Security
 
