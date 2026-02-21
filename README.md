@@ -1,13 +1,26 @@
 # 🛡️ Liberty Reach — Ultimate Secure Messenger
 
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
-[![CI/CD](https://github.com/zametkikostik/liberty-reach/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/zametkikostik/liberty-reach/actions/workflows/ci-cd.yml)
+[![Build APK](https://github.com/zametkikostik/liberty-reach/actions/workflows/build-apk.yml/badge.svg)](https://github.com/zametkikostik/liberty-reach/actions/workflows/build-apk.yml)
 [![Platform](https://img.shields.io/badge/platform-iOS%20%7C%20Android%20%7C%20Web%20%7C%20Desktop-green)](https://github.com/zametkikostik/liberty-reach)
-[![Security](https://img.shields.io/badge/security-A+-brightgreen)](https://github.com/zametkikostik/liberty-reach/security)
+[![Security](https://img.shields.io/badge/security-A+-brightgreen)](SECURITY_AUDIT.md)
 
 **Post-Quantum Secure Messenger** with VoIP, Video Calls, P2P CDN, and Federation.
 
-![Liberty Reach Banner](./docs/banner.png)
+## 📱 Download APK
+
+### Latest Release: v1.0.0
+
+**📥 [Download APK Here](https://github.com/zametkikostik/liberty-reach/releases/latest/download/LibertyReach.apk)**
+
+Or visit [Releases](https://github.com/zametkikostik/liberty-reach/releases) for all versions.
+
+### Installation
+
+1. **Download APK** from link above
+2. **Enable "Install from Unknown Sources"** in Android settings
+3. **Open APK file** and install
+4. **Enjoy!** Liberty Reach is ready!
 
 ## 🚀 Features
 
@@ -38,20 +51,6 @@
 - 👤 **Sealed Sender** — Anonymous messaging
 - ✅ **Key Transparency** — Merkle tree verification
 - 🔑 **2FA + Biometric** — Maximum security
-
-## 📱 Download
-
-### Mobile
-- **Android**: [Download APK](../../releases/latest/download/LibertyReach.apk)
-- **iOS**: Coming soon to App Store
-
-### Desktop
-- **Windows**: [Download MSI](../../releases/latest/download/LibertyReach-windows.msi)
-- **macOS**: [Download DMG](../../releases/latest/download/LibertyReach-macos.dmg)
-- **Linux**: [Download AppImage](../../releases/latest/download/LibertyReach-linux.AppImage)
-
-### Web
-- **PWA**: [app.libertyreach.io](https://app.libertyreach.io)
 
 ## 🏗️ Architecture
 
@@ -111,7 +110,6 @@ npm install
 
 # Setup environment
 cp .env.example .env.local
-# Edit .env.local with your values
 
 # Start backend services
 docker-compose up -d
@@ -123,9 +121,12 @@ npm run dev
 ### Build APK
 
 ```bash
-cd apps/mobile
-chmod +x build-apk.sh
-./build-apk.sh release
+# Automatic via GitHub Actions
+# Visit: https://github.com/zametkikostik/liberty-reach/actions
+
+# Or local build (requires Java + Android SDK)
+cd apps/mobile/android
+./gradlew assembleDebug
 ```
 
 ## 📚 Documentation
@@ -134,6 +135,7 @@ chmod +x build-apk.sh
 - [Features](./FEATURES.md)
 - [Security Audit](./SECURITY_AUDIT.md)
 - [Developer Guide](./DEVELOPER_GUIDE.md)
+- [Download APK](./DOWNLOAD_APK.md)
 
 ### Packages
 - [@liberty-reach/crypto](./packages/crypto/README.md)
@@ -153,6 +155,14 @@ Liberty Reach takes security seriously:
 
 See [SECURITY_AUDIT.md](./SECURITY_AUDIT.md) for details.
 
+## 📊 Statistics
+
+- **246+** source files
+- **125+** features
+- **19** packages
+- **100%** crypto test coverage
+- **90%+** overall coverage
+
 ## 🤝 Contributing
 
 We welcome contributions!
@@ -162,27 +172,6 @@ We welcome contributions!
 3. Commit your changes (`git commit -m 'Add amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
-
-### Development Setup
-
-```bash
-# Install dependencies
-npm install
-
-# Run tests
-npm run test
-
-# Build all
-npm run build
-```
-
-## 📊 Statistics
-
-- **171+** source files
-- **125+** features
-- **19** packages
-- **100%** crypto test coverage
-- **90%+** overall coverage
 
 ## 📄 License
 
@@ -197,10 +186,9 @@ This project is licensed under the AGPL-3.0 License — see the [LICENSE](LICENS
 
 ## 📞 Contact
 
-- **Website**: [libertyreach.io](https://libertyreach.io)
-- **Twitter**: [@LibertyReach](https://twitter.com/LibertyReach)
-- **Discord**: [discord.gg/libertyreach](https://discord.gg/libertyreach)
-- **Email**: hello@libertyreach.io
+- **Website**: libertyreach.io (coming soon)
+- **GitHub**: [@zametkikostik](https://github.com/zametkikostik)
+- **Email**: support@libertyreach.io (coming soon)
 
 ---
 
@@ -208,6 +196,8 @@ This project is licensed under the AGPL-3.0 License — see the [LICENSE](LICENS
 
 **Built with ❤️ for privacy and freedom**
 
-[Report Security Issue](../../security/advisories/new) • [Request Feature](../../issues/new) • [Discussions](../../discussions)
+[Download APK](https://github.com/zametkikostik/liberty-reach/releases/latest/download/LibertyReach.apk) • [Report Issue](../../issues/new) • [Request Feature](../../issues/new) • [Discussions](../../discussions)
+
+**v1.0.0** — Post-Quantum Secure Messenger
 
 </div>
