@@ -314,7 +314,8 @@
                 localStorage.setItem('token', token);
                 localStorage.setItem('username', username);
 
-                showDashboard({ userId, username });
+                // Redirect to messenger
+                window.location.href = 'messenger.html';
             } catch (error) {
                 errorDiv.textContent = 'Invalid credentials';
                 errorDiv.classList.remove('hidden');

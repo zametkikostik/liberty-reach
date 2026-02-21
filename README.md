@@ -43,12 +43,16 @@ npx http-server apps/web -p 8080
 Then open:
 - **🌐 Main Site**: http://localhost:8080
 - **🔐 Login/Register**: http://localhost:8080/login.html
+- **💬 Full Messenger**: http://localhost:8080/messenger.html
 
 **Features:**
-- ✅ User registration
-- ✅ Login/logout
-- ✅ Session persistence
-- ✅ Secure authentication
+- ✅ User registration & login
+- ✅ Real-time messaging
+- ✅ Conversations list
+- ✅ Message encryption indicator
+- ✅ Translation (50+ languages)
+- ✅ File attachments (coming soon)
+- ✅ Voice/Video calls (coming soon)
 
 ### Build Instructions
 

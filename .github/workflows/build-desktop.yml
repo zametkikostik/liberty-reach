@@ -1,0 +1,134 @@
+name: Build Desktop Apps
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      
+      - name: Install dependencies
+        working-directory: apps/desktop
+        run: npm ci
+      
+      - name: Build Windows MSI
+        working-directory: apps/desktop
+        run: npm run tauri build
+      
+      - name: Upload MSI
+        uses: actions/upload-artifact@v4
+        with:
+          name: liberty-reach-windows
+          path: apps/desktop/src-tauri/target/release/bundle/msi/*.msi
+
+  build-macos:
+    runs-on: macos-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      
+      - name: Install dependencies
+        working-directory: apps/desktop
+        run: npm ci
+      
+      - name: Build macOS DMG
+        working-directory: apps/desktop
+        run: npm run tauri build
+      
+      - name: Upload DMG
+        uses: actions/upload-artifact@v4
+        with:
+          name: liberty-reach-macos
+          path: apps/desktop/src-tauri/target/release/bundle/dmg/*.dmg
+
+  build-linux:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      
+      - name: Install dependencies
+        working-directory: apps/desktop
+        run: npm ci
+      
+      - name: Build Linux AppImage
+        working-directory: apps/desktop
+        run: npm run tauri build
+      
+      - name: Upload AppImage
+        uses: actions/upload-artifact@v4
+        with:
+          name: liberty-reach-linux
+          path: apps/desktop/src-tauri/target/release/bundle/appimage/*.AppImage
+
+  create-release:
+    needs: [build-windows, build-macos, build-linux]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Download Windows MSI
+        uses: actions/download-artifact@v4
+        with:
+          name: liberty-reach-windows
+          path: ./windows
+      
+      - name: Download macOS DMG
+        uses: actions/download-artifact@v4
+        with:
+          name: liberty-reach-macos
+          path: ./macos
+      
+      - name: Download Linux AppImage
+        uses: actions/download-artifact@v4
+        with:
+          name: liberty-reach-linux
+          path: ./linux
+      
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            windows/*.msi
+            macos/*.dmg
+            linux/*.AppImage
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
