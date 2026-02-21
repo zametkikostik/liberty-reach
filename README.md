@@ -11,47 +11,36 @@
 
 ### Latest Release: v1.0.0
 
+> **⚠️ First Release Pending**
+> 
+> APK and desktop apps will be available after the first release is created.
+> You can build locally or trigger GitHub Actions to build automatically.
+
 #### Mobile
-- **📱 Android**: [Download APK](https://github.com/zametkikostik/liberty-reach/releases/latest/download/LibertyReach.apk)
+- **📱 Android**: [Build APK](./APK_STATUS.md) | [GitHub Actions](https://github.com/zametkikostik/liberty-reach/actions)
 - **🍎 iOS**: Coming soon to App Store
 
 #### Desktop
-- **🪟 Windows**: [Download MSI](https://github.com/zametkikostik/liberty-reach/releases/latest/download/LibertyReach-windows.msi)
-- **🍎 macOS**: [Download DMG](https://github.com/zametkikostik/liberty-reach/releases/latest/download/LibertyReach-macos.dmg)
-- **🐧 Linux**: [Download AppImage](https://github.com/zametkikostik/liberty-reach/releases/latest/download/LibertyReach-linux.AppImage)
+- **🪟 Windows**: [Build MSI](./DESKTOP_DOWNLOADS.md) | [Actions](https://github.com/zametkikostik/liberty-reach/actions)
+- **🍎 macOS**: [Build DMG](./DESKTOP_DOWNLOADS.md) | [Actions](https://github.com/zametkikostik/liberty-reach/actions)
+- **🐧 Linux**: [Build AppImage](./DESKTOP_DOWNLOADS.md) | [Actions](https://github.com/zametkikostik/liberty-reach/actions)
 
 #### Web
-- **🌐 PWA**: [app.libertyreach.io](https://app.libertyreach.io) (coming soon)
+- **🌐 PWA**: Coming soon at app.libertyreach.io
 
-Or visit [Releases](https://github.com/zametkikostik/liberty-reach/releases) for all versions and checksums.
+### Quick Download (After First Release)
 
-### Installation
+Once v1.0.0 is released:
+- **Android APK**: https://github.com/zametkikostik/liberty-reach/releases/latest/download/LibertyReach.apk
+- **Windows MSI**: https://github.com/zametkikostik/liberty-reach/releases/latest/download/LibertyReach-windows.msi
+- **macOS DMG**: https://github.com/zametkikostik/liberty-reach/releases/latest/download/LibertyReach-macos.dmg
+- **Linux AppImage**: https://github.com/zametkikostik/liberty-reach/releases/latest/download/LibertyReach-linux.AppImage
 
-#### Android APK
-1. **Download APK** from link above
-2. **Enable "Install from Unknown Sources"** in Android settings
-3. **Open APK file** and install
-4. **Enjoy!** Liberty Reach is ready!
+### Build Locally
 
-#### Windows MSI
-1. **Download MSI** installer
-2. **Run installer** and follow wizard
-3. **Launch** Liberty Reach from Start menu
-
-#### macOS DMG
-1. **Download DMG** file
-2. **Open DMG** and drag to Applications
-3. **Launch** from Applications folder
-
-#### Linux AppImage
-1. **Download AppImage**
-2. **Make executable**: `chmod +x LibertyReach-linux.AppImage`
-3. **Run**: `./LibertyReach-linux.AppImage`
-
-### Documentation
-
-- [Android APK Guide](./DOWNLOAD_APK.md)
-- [Desktop Apps Guide](./DESKTOP_DOWNLOADS.md)
+See build guides:
+- [Android APK Build Guide](./APK_STATUS.md)
+- [Desktop Apps Build Guide](./DESKTOP_DOWNLOADS.md)
 
 ## 🚀 Features
 
