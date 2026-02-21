@@ -7,20 +7,51 @@
 
 **Post-Quantum Secure Messenger** with VoIP, Video Calls, P2P CDN, and Federation.
 
-## 📱 Download APK
+## 📱 Download
 
 ### Latest Release: v1.0.0
 
-**📥 [Download APK Here](https://github.com/zametkikostik/liberty-reach/releases/latest/download/LibertyReach.apk)**
+#### Mobile
+- **📱 Android**: [Download APK](https://github.com/zametkikostik/liberty-reach/releases/latest/download/LibertyReach.apk)
+- **🍎 iOS**: Coming soon to App Store
 
-Or visit [Releases](https://github.com/zametkikostik/liberty-reach/releases) for all versions.
+#### Desktop
+- **🪟 Windows**: [Download MSI](https://github.com/zametkikostik/liberty-reach/releases/latest/download/LibertyReach-windows.msi)
+- **🍎 macOS**: [Download DMG](https://github.com/zametkikostik/liberty-reach/releases/latest/download/LibertyReach-macos.dmg)
+- **🐧 Linux**: [Download AppImage](https://github.com/zametkikostik/liberty-reach/releases/latest/download/LibertyReach-linux.AppImage)
+
+#### Web
+- **🌐 PWA**: [app.libertyreach.io](https://app.libertyreach.io) (coming soon)
+
+Or visit [Releases](https://github.com/zametkikostik/liberty-reach/releases) for all versions and checksums.
 
 ### Installation
 
+#### Android APK
 1. **Download APK** from link above
 2. **Enable "Install from Unknown Sources"** in Android settings
 3. **Open APK file** and install
 4. **Enjoy!** Liberty Reach is ready!
+
+#### Windows MSI
+1. **Download MSI** installer
+2. **Run installer** and follow wizard
+3. **Launch** Liberty Reach from Start menu
+
+#### macOS DMG
+1. **Download DMG** file
+2. **Open DMG** and drag to Applications
+3. **Launch** from Applications folder
+
+#### Linux AppImage
+1. **Download AppImage**
+2. **Make executable**: `chmod +x LibertyReach-linux.AppImage`
+3. **Run**: `./LibertyReach-linux.AppImage`
+
+### Documentation
+
+- [Android APK Guide](./DOWNLOAD_APK.md)
+- [Desktop Apps Guide](./DESKTOP_DOWNLOADS.md)
 
 ## 🚀 Features
 
