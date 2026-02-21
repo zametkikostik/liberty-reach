@@ -38,12 +38,17 @@ python3 -m http.server 8080
 
 # Option 2: Node.js http-server
 npx http-server apps/web -p 8080
-
-# Option 3: Direct file
-open apps/web/index.html
 ```
 
-Then open: **http://localhost:8080**
+Then open:
+- **🌐 Main Site**: http://localhost:8080
+- **🔐 Login/Register**: http://localhost:8080/login.html
+
+**Features:**
+- ✅ User registration
+- ✅ Login/logout
+- ✅ Session persistence
+- ✅ Secure authentication
 
 ### Build Instructions
 

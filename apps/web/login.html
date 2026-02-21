@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liberty Reach — Sign In</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .auth-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 400px;
+            width: 100%;
+            color: #111;
+        }
+        .auth-logo {
+            font-size: 64px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .auth-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .auth-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        .auth-tab {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            background: #f5f5f5;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .auth-tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .form-group label {
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+        .form-group input {
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .auth-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .auth-button:hover:not(:disabled) {
+            transform: translateY(-2px);
+        }
+        .auth-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .error-message {
+            background: #ffebee;
+            color: #d32f2f;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        .success-message {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        .auth-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+        .auth-link {
+            background: none;
+            border: none;
+            color: #667eea;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .auth-security {
+            margin-top: 30px;
+            text-align: center;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 12px;
+        }
+        .security-badge {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .auth-security p {
+            font-size: 12px;
+            color: #666;
+        }
+        .hidden { display: none; }
+        
+        /* Dashboard */
+        .dashboard {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: white;
+        }
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .logout-button {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 8px 16px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .welcome-message {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .welcome-message h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Auth Screens -->
+    <div id="authScreens">
+        <div class="auth-container">
+            <div class="auth-logo">🛡️</div>
+            <h1 id="authTitle">Welcome</h1>
+            <p class="auth-subtitle">Post-Quantum Secure Messenger</p>
+
+            <div class="auth-tabs">
+                <button class="auth-tab active" onclick="showTab('login')">Sign In</button>
+                <button class="auth-tab" onclick="showTab('register')">Sign Up</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Username or Phone</label>
+                    <input type="text" id="loginIdentifier" placeholder="Enter username or phone" required />
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter password" required />
+                </div>
+                <div id="loginError" class="error-message hidden"></div>
+                <button type="submit" class="auth-button" id="loginButton">Sign In</button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" class="auth-form hidden" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="regUsername" placeholder="Choose username" required minlength="3" />
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="regPhone" placeholder="+1 (555) 000-0000" required />
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="regPassword" placeholder="Create password" required minlength="8" />
+                </div>
+                <div id="registerError" class="error-message hidden"></div>
+                <div id="registerSuccess" class="success-message hidden"></div>
+                <button type="submit" class="auth-button" id="registerButton">Create Account</button>
+            </form>
+
+            <div class="auth-security">
+                <div class="security-badge">🔐</div>
+                <p>End-to-end encrypted with CRYSTALS-Kyber-1024</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard (shown after login) -->
+    <div id="dashboard" class="dashboard hidden">
+        <div class="dashboard-header">
+            <div class="logo">🛡️ Liberty<span>Reach</span></div>
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">👤</div>
+                <span id="userName">User</span>
+                <button class="logout-button" onclick="logout()">Logout</button>
+            </div>
+        </div>
+        <div class="welcome-message">
+            <h1>Welcome to Liberty Reach! 🎉</h1>
+            <p>You are now signed in. Full messaging features coming soon.</p>
+        </div>
+    </div>
+
+    <script>
+        // State
+        let currentUser = null;
+
+        // Tab switching
+        function showTab(tab) {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const tabs = document.querySelectorAll('.auth-tab');
+
+            if (tab === 'login') {
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+                tabs[0].classList.add('active');
+                tabs[1].classList.remove('active');
+            } else {
+                loginForm.classList.add('hidden');
+                registerForm.classList.remove('hidden');
+                tabs[0].classList.remove('active');
+                tabs[1].classList.add('active');
+            }
+
+            // Clear errors
+            document.getElementById('loginError').classList.add('hidden');
+            document.getElementById('registerError').classList.add('hidden');
+        }
+
+        // Login handler
+        async function handleLogin(event) {
+            event.preventDefault();
+            const button = document.getElementById('loginButton');
+            const errorDiv = document.getElementById('loginError');
+
+            button.disabled = true;
+            button.textContent = 'Signing In...';
+            errorDiv.classList.add('hidden');
+
+            try {
+                const identifier = document.getElementById('loginIdentifier').value;
+                const password = document.getElementById('loginPassword').value;
+
+                // Mock login (replace with actual API call)
+                await new Promise(resolve => setTimeout(resolve, 1000));
+
+                // Store session
+                const userId = `user-${Date.now()}`;
+                const token = `token-${Math.random().toString(36).substr(2)}`;
+                const username = identifier;
+
+                localStorage.setItem('userId', userId);
+                localStorage.setItem('token', token);
+                localStorage.setItem('username', username);
+
+                showDashboard({ userId, username });
+            } catch (error) {
+                errorDiv.textContent = 'Invalid credentials';
+                errorDiv.classList.remove('hidden');
+            } finally {
+                button.disabled = false;
+                button.textContent = 'Sign In';
+            }
+        }
+
+        // Register handler
+        async function handleRegister(event) {
+            event.preventDefault();
+            const button = document.getElementById('registerButton');
+            const errorDiv = document.getElementById('registerError');
+            const successDiv = document.getElementById('registerSuccess');
+
+            button.disabled = true;
+            button.textContent = 'Creating Account...';
+            errorDiv.classList.add('hidden');
+            successDiv.classList.add('hidden');
+
+            try {
+                const username = document.getElementById('regUsername').value;
+                const phone = document.getElementById('regPhone').value;
+                const password = document.getElementById('regPassword').value;
+
+                // Mock registration
+                await new Promise(resolve => setTimeout(resolve, 1000));
+
+                // Store session
+                const userId = `user-${Date.now()}`;
+                const token = `token-${Math.random().toString(36).substr(2)}`;
+
+                localStorage.setItem('userId', userId);
+                localStorage.setItem('token', token);
+                localStorage.setItem('username', username);
+
+                successDiv.textContent = 'Account created! Redirecting...';
+                successDiv.classList.remove('hidden');
+
+                setTimeout(() => {
+                    showDashboard({ userId, username });
+                }, 1000);
+            } catch (error) {
+                errorDiv.textContent = 'Registration failed';
+                errorDiv.classList.remove('hidden');
+            } finally {
+                button.disabled = false;
+                button.textContent = 'Create Account';
+            }
+        }
+
+        // Show dashboard
+        function showDashboard(user) {
+            currentUser = user;
+            document.getElementById('authScreens').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('hidden');
+            document.getElementById('userName').textContent = user.username;
+            document.getElementById('userAvatar').textContent = user.username[0]?.toUpperCase() || '👤';
+        }
+
+        // Logout
+        function logout() {
+            localStorage.removeItem('userId');
+            localStorage.removeItem('token');
+            localStorage.removeItem('username');
+            currentUser = null;
+            document.getElementById('dashboard').classList.add('hidden');
+            document.getElementById('authScreens').classList.remove('hidden');
+            
+            // Clear forms
+            document.getElementById('loginForm').reset();
+            document.getElementById('registerForm').reset();
+        }
+
+        // Check existing session
+        function checkSession() {
+            const userId = localStorage.getItem('userId');
+            const username = localStorage.getItem('username');
+
+            if (userId && username) {
+                showDashboard({ userId, username });
+            }
+        }
+
+        // Initialize
+        checkSession();
+    </script>
+</body>
+</html>
