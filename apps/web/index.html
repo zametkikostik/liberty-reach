@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liberty Reach — Post-Quantum Secure Messenger</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        .logo { font-size: 28px; font-weight: bold; }
+        .logo span { color: #5AC8FA; }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            opacity: 0.9;
+        }
+        nav a:hover { opacity: 1; }
+        
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 22px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        /* Download Section */
+        .download-section {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+        .download-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .download-card {
+            background: rgba(255,255,255,0.15);
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .download-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.2);
+        }
+        .download-icon { font-size: 48px; margin-bottom: 15px; }
+        .download-card h3 { margin-bottom: 10px; }
+        .download-card p { opacity: 0.8; margin-bottom: 20px; font-size: 14px; }
+        .download-btn {
+            display: inline-block;
+            background: #5AC8FA;
+            color: #111;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .download-btn:hover { background: #7ED3FF; }
+        .download-btn.disabled {
+            background: rgba(255,255,255,0.3);
+            cursor: not-allowed;
+        }
+        
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        .feature {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 16px;
+        }
+        .feature-icon { font-size: 40px; margin-bottom: 15px; }
+        .feature h3 { margin-bottom: 10px; }
+        .feature p { opacity: 0.9; line-height: 1.6; }
+        
+        /* Status */
+        .status-box {
+            background: rgba(52, 199, 89, 0.2);
+            border: 1px solid #34C759;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        .status-box h3 { margin-bottom: 10px; }
+        .status-box ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        .status-box li::before {
+            content: "✅ ";
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.8;
+        }
+        
+        /* Running indicator */
+        .running-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #34C759;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">🛡️ Liberty<span>Reach</span></div>
+            <nav>
+                <a href="#download">Download</a>
+                <a href="#features">Features</a>
+                <a href="https://github.com/zametkikostik/liberty-reach" target="_blank">GitHub</a>
+            </nav>
+        </header>
+        
+        <section class="hero">
+            <h1>Post-Quantum Secure Messenger</h1>
+            <p>End-to-end encrypted messaging with CRYSTALS-Kyber-1024</p>
+            
+            <div class="badges">
+                <span class="badge">🔐 Post-Quantum Crypto</span>
+                <span class="badge">📡 E2E Encrypted</span>
+                <span class="badge">🌐 P2P Network</span>
+                <span class="badge">🎙️ VoIP Calls</span>
+                <span class="badge">📹 Video Calls</span>
+                <span class="badge">🇧🇬 50+ Languages</span>
+            </div>
+        </section>
+        
+        <section id="download" class="download-section">
+            <h2>📥 Download Liberty Reach</h2>
+            <div class="download-grid">
+                <!-- Android -->
+                <div class="download-card">
+                    <div class="download-icon">📱</div>
+                    <h3>Android</h3>
+                    <p>APK • Android 7.0+</p>
+                    <a href="#" class="download-btn disabled" onclick="alert('Build via GitHub Actions or locally'); return false;">
+                        Coming Soon
+                    </a>
+                </div>
+                
+                <!-- iOS -->
+                <div class="download-card">
+                    <div class="download-icon">🍎</div>
+                    <h3>iOS</h3>
+                    <p>App Store • iOS 14+</p>
+                    <a href="#" class="download-btn disabled">Coming Soon</a>
+                </div>
+                
+                <!-- Windows -->
+                <div class="download-card">
+                    <div class="download-icon">🪟</div>
+                    <h3>Windows</h3>
+                    <p>MSI • Windows 10+</p>
+                    <a href="#" class="download-btn disabled" onclick="alert('Build via GitHub Actions or locally'); return false;">
+                        Coming Soon
+                    </a>
+                </div>
+                
+                <!-- macOS -->
+                <div class="download-card">
+                    <div class="download-icon">🍎</div>
+                    <h3>macOS</h3>
+                    <p>DMG • macOS 10.15+</p>
+                    <a href="#" class="download-btn disabled" onclick="alert('Build via GitHub Actions or locally'); return false;">
+                        Coming Soon
+                    </a>
+                </div>
+                
+                <!-- Linux -->
+                <div class="download-card">
+                    <div class="download-icon">🐧</div>
+                    <h3>Linux</h3>
+                    <p>AppImage • glibc 2.28+</p>
+                    <a href="#" class="download-btn disabled" onclick="alert('Build via GitHub Actions or locally'); return false;">
+                        Coming Soon
+                    </a>
+                </div>
+                
+                <!-- Web -->
+                <div class="download-card">
+                    <div class="download-icon">🌐</div>
+                    <h3>Web</h3>
+                    <p>PWA • Any Browser</p>
+                    <a href="#" class="download-btn" onclick="alert('You are using the web version now!'); return false;">
+                        Use Now
+                    </a>
+                </div>
+            </div>
+            
+            <div class="status-box">
+                <h3>📦 Build Status</h3>
+                <ul>
+                    <li>First release (v1.0.0) — Pending</li>
+                    <li>GitHub Actions workflows — Ready</li>
+                    <li>Local builds — Available (see documentation)</li>
+                </ul>
+                <p style="margin-top: 15px; opacity: 0.8;">
+                    <strong>To get builds:</strong> Create release v1.0.0 on GitHub → Actions will build automatically
+                </p>
+            </div>
+        </section>
+        
+        <section id="features" class="features">
+            <div class="feature">
+                <div class="feature-icon">🔐</div>
+                <h3>Post-Quantum Crypto</h3>
+                <p>CRYSTALS-Kyber-1024 and Dilithium5 for quantum-resistant encryption</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📞</div>
+                <h3>VoIP Calls</h3>
+                <p>Internal numbers, PSTN integration, and offline call handling</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📹</div>
+                <h3>Video Calls</h3>
+                <p>WebRTC video calls with screen sharing and group conferences</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎙️</div>
+                <h3>Push-to-Talk</h3>
+                <p>Zello-like walkie-talkie functionality for instant communication</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🌐</div>
+                <h3>P2P Network</h3>
+                <p>Direct P2P connections without requiring public IP addresses</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🇧🇬</div>
+                <h3>Auto Translation</h3>
+                <p>Real-time translation to 50+ languages including Bulgarian</p>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Liberty Reach v1.0.0 — AGPL-3.0-or-later</p>
+            <p style="margin-top: 10px;">
+                <a href="https://github.com/zametkikostik/liberty-reach" style="color: white;">GitHub</a> •
+                <a href="https://github.com/zametkikostik/liberty-reach/issues" style="color: white;">Issues</a> •
+                <a href="https://github.com/zametkikostik/liberty-reach/releases" style="color: white;">Releases</a>
+            </p>
+        </footer>
+    </div>
+    
+    <div class="running-indicator">
+        🟢 Running on port 8080
+    </div>
+    
+    <script>
+        console.log('Liberty Reach Web loaded');
+        console.log('Features: PQ Crypto, VoIP, Video, P2P, Translation');
+        
+        // Service Worker registration for PWA
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(() => console.log('Service Worker registered'))
+                .catch(err => console.error('SW registration failed:', err));
+        }
+    </script>
+</body>
+</html>

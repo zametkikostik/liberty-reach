@@ -14,33 +14,43 @@
 > **⚠️ First Release Pending**
 > 
 > APK and desktop apps will be available after the first release is created.
-> You can build locally or trigger GitHub Actions to build automatically.
+> You can build locally, use GitHub Actions, or try the web version now!
 
-#### Mobile
+#### Try Web Version Now
+- **🌐 Demo**: Run locally on port 8080 (see instructions below)
+- **📱 PWA**: Coming soon at app.libertyreach.io
+
+#### Mobile (After v1.0.0 Release)
 - **📱 Android**: [Build APK](./APK_STATUS.md) | [GitHub Actions](https://github.com/zametkikostik/liberty-reach/actions)
 - **🍎 iOS**: Coming soon to App Store
 
-#### Desktop
+#### Desktop (After v1.0.0 Release)
 - **🪟 Windows**: [Build MSI](./DESKTOP_DOWNLOADS.md) | [Actions](https://github.com/zametkikostik/liberty-reach/actions)
 - **🍎 macOS**: [Build DMG](./DESKTOP_DOWNLOADS.md) | [Actions](https://github.com/zametkikostik/liberty-reach/actions)
 - **🐧 Linux**: [Build AppImage](./DESKTOP_DOWNLOADS.md) | [Actions](https://github.com/zametkikostik/liberty-reach/actions)
 
-#### Web
-- **🌐 PWA**: Coming soon at app.libertyreach.io
+### 🚀 Quick Start — Run Web Version Locally
 
-### Quick Download (After First Release)
+```bash
+# Option 1: Simple HTTP server (Python)
+cd /home/kostik/liberty-reach/apps/web
+python3 -m http.server 8080
 
-Once v1.0.0 is released:
-- **Android APK**: https://github.com/zametkikostik/liberty-reach/releases/latest/download/LibertyReach.apk
-- **Windows MSI**: https://github.com/zametkikostik/liberty-reach/releases/latest/download/LibertyReach-windows.msi
-- **macOS DMG**: https://github.com/zametkikostik/liberty-reach/releases/latest/download/LibertyReach-macos.dmg
-- **Linux AppImage**: https://github.com/zametkikostik/liberty-reach/releases/latest/download/LibertyReach-linux.AppImage
+# Option 2: Node.js http-server
+npx http-server apps/web -p 8080
 
-### Build Locally
+# Option 3: Direct file
+open apps/web/index.html
+```
+
+Then open: **http://localhost:8080**
+
+### Build Instructions
 
 See build guides:
 - [Android APK Build Guide](./APK_STATUS.md)
 - [Desktop Apps Build Guide](./DESKTOP_DOWNLOADS.md)
+- [Web PWA Guide](./apps/web/README.md)
 
 ## 🚀 Features
 
