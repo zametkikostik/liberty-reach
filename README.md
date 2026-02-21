@@ -45,14 +45,17 @@ Then open:
 - **🔐 Login/Register**: http://localhost:8080/login.html
 - **💬 Full Messenger**: http://localhost:8080/messenger.html
 
-**Features:**
-- ✅ User registration & login
+**Features (Telegram-style UI):**
+- ✅ Modern dark theme (like Telegram)
+- ✅ Smooth animations
 - ✅ Real-time messaging
-- ✅ Conversations list
-- ✅ Message encryption indicator
-- ✅ Translation (50+ languages)
-- ✅ File attachments (coming soon)
-- ✅ Voice/Video calls (coming soon)
+- ✅ Typing indicators
+- ✅ Message status (✓/✓✓)
+- ✅ Search conversations
+- ✅ Auto-translate (50+ languages)
+- ✅ Chat info panel
+- ✅ Unread counter
+- ✅ Online status
 
 ### Build Instructions
 
